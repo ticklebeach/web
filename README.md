@@ -1,4 +1,4 @@
-# web
+# Tickle Beach Web
 
 This repo is a copy of our internal repo, I'm going to be moving files over one at a time as I get
 them cleaned up and explain each.
