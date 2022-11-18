@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport"
+    content="width=device-width, minimal-ui, viewport-fit=cover, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  <title>Tickle Beach</title>
+  <style>
+    :root {
+      overflow: hidden;
+      height: 100%
+    }
+
+    body {
+      margin: 0
+    }
+  </style>
+</head>
+
+<body>
+  <div id="fixed-window">
+    <div id="preview">
+      <style>
+        html,
+        body {
+          padding: 0;
+          margin: 0;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+          overflow-y: scroll;
+          overflow: hidden;
+          font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+        }
+
+        body {
+          height: 100%;
+        }
+
+        #fixed-window {
+          width: 100%;
+          height: 100%;
+        }
+
+        #preview {
+          width: 100%;
+          height: 100%;
+        }
+
+        #render-preview {
+          z-index: 50;
+        }
+
+        #preview img {
+          position: absolute;
+        }
+
+        /*
+        iframe {
+          width: 100%;
+          height: 100%;
+          border: 0;
+          z-index: 50;
+        }
+
+
+        #viewer-controls {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 100;
+        } */
+
+        #viewer-controls #controls-background {
+          top: 20%;
+        }
+
+        #controls-background {
+          background-color: rgba(0.3, 0.3, 0.3, 0.5);
+          position: absolute;
+          top: 90%;
+
+          width: 50%;
+          margin-left: 25%;
+          margin-right: 25%;
+          border-radius: 4px;
+          z-index: 75;
+        }
+
+        a,
+        a:hover,
+        a:visited,
+        a:active {
+          color: white;
+          font-weight: 600;
+          text-decoration: none;
+        }
+
+        #controls-text {
+          font-size: 18px;
+          padding: 10px;
+          text-align: center;
+        }
+
+        #controls-text span {
+          font-size: 12px;
+          margin-top: 5px;
+          display: block;
+        }
+      </style>
+      <a href="#" onclick="clickToShow()">
+        <img id="render-preview" src="/preview/0.png" alt="tickle beach preview" />
+        <div id="controls-background">
+          <div id="controls-text">
+            click to play
+          </div>
+        </div>
+      </a>
+      <script>
+        let previewImage = document.getElementById("render-preview");
+        let setImageSize = () => {
+          let height = window.innerHeight;
+          let width = window.innerWidth;
+          if (height > width) {
+            previewImage.setAttribute("width", height);
+            previewImage.setAttribute("height", height);
+            let mleft = "margin-left: -" + ((height - width) / 2).toString() + "px";
+            previewImage.setAttribute("style", mleft);
+          } else {
+            previewImage.setAttribute("width", width);
+            previewImage.setAttribute("height", width);
+            let mleft = "margin-left: 0px";
+            previewImage.setAttribute("style", mleft);
+          }
+        }
+        setImageSize();
+
+        addEventListener('resize', (event) => {
+          setImageSize();
+        });
+
+      </script>
+    </div>
+  </div>
+</body>
+
+</html>
