@@ -36,5 +36,5 @@ open public/viewer.html
 Take all the source and build it into one single html file for prod.
 
 ```
-yarn run webpack --config webpack.oct.prod.js && open prod/viewer.html
+yarn run webpack --config webpack.oct.prod.js && open prod/index.html
 ```
