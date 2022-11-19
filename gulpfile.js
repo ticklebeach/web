@@ -163,71 +163,72 @@ let packModelData = () => {
 // exports.minifyShaders = minifyShaders;
 // exports.packModelData = packModelData;
 
-// let clearHtml = () => {
-//   fs.mkdirSync('prod/html', { recursive: true });
-//   fs.readdirSync('prod/html').forEach((file) => {
-//     fs.unlinkSync(`prod/html/${file}`);
-//   });
-// };
+let clearHtml = () => {
+  fs.mkdirSync('prod/html', { recursive: true });
+  fs.readdirSync('prod/html').forEach((file) => {
+    fs.unlinkSync(`prod/html/${file}`);
+  });
+};
 
-// let clearHtmlDest = () => {
-//   const dest = '../ticklenft/html';
-//   fs.mkdirSync(dest, { recursive: true });
-//   fs.readdirSync(dest).forEach((file) => {
-//     fs.unlinkSync(`${dest}/${file}`);
-//   });
-// };
+let clearHtmlDest = () => {
+  console.log('not implemented yet in public repo');
+  // const dest = '../ticklenft/html';
+  // fs.mkdirSync(dest, { recursive: true });
+  // fs.readdirSync(dest).forEach((file) => {
+  //   fs.unlinkSync(`${dest}/${file}`);
+  // });
+};
 
-// const maxSize = 24000;
+const maxSize = 24000;
 
-// let logic = (cb) => {
-//   clearHtmlDest();
-//   clearHtml();
+let logic = (cb) => {
+  clearHtmlDest();
+  clearHtml();
 
-//   let index = fs.readFileSync('prod/index.html', 'utf8');
-//   let split = index.split('</script>');
-//   let back = split.map((s, i) => {
-//     if (i == split.length - 1) {
-//       return s;
-//     }
+  let index = fs.readFileSync('prod/index.html', 'utf8');
+  let split = index.split('</script>');
+  let back = split.map((s, i) => {
+    if (i == split.length - 1) {
+      return s;
+    }
 
-//     return s + '</script>';
-//   });
+    return s + '</script>';
+  });
 
-//   let i = 0;
-//   for (let s of back) {
-//     fs.writeFileSync(`prod/html/index.${i}.html`, s);
-//     i++;
-//   }
+  let i = 0;
+  for (let s of back) {
+    fs.writeFileSync(`prod/html/index.${i}.html`, s);
+    i++;
+  }
 
-//   // files too big
-//   const htmlFile = 1;
-//   let modelFiles = fs.readFileSync(`prod/html/index.${htmlFile}.html`, 'utf8');
+  // files too big
+  const htmlFile = 1;
+  let modelFiles = fs.readFileSync(`prod/html/index.${htmlFile}.html`, 'utf8');
 
-//   // split models in to chunks the size of maxSize and write them to even/index.1.html
-//   let location = 0;
-//   i = 0;
-//   while (location < modelFiles.length) {
-//     let part = modelFiles.slice(location, location + maxSize);
-//     fs.writeFileSync(`prod/html/index.${htmlFile}.${i}.html`, part);
-//     location += maxSize;
-//     i++;
-//   }
+  // split models in to chunks the size of maxSize and write them to even/index.1.html
+  let location = 0;
+  i = 0;
+  while (location < modelFiles.length) {
+    let part = modelFiles.slice(location, location + maxSize);
+    fs.writeFileSync(`prod/html/index.${htmlFile}.${i}.html`, part);
+    location += maxSize;
+    i++;
+  }
 
-//   // delete this file prod/html/index.1.html
-//   fs.unlinkSync(`prod/html/index.${htmlFile}.html`);
+  // delete this file prod/html/index.1.html
+  fs.unlinkSync(`prod/html/index.${htmlFile}.html`);
 
-//   // files too small
-//   // const smallFiles = [2, 3];
-//   let file2 = fs.readFileSync(`prod/html/index.2.html`, 'utf8');
-//   let file3 = fs.readFileSync(`prod/html/index.3.html`, 'utf8');
-//   let newFile = file2 + file3;
-//   fs.writeFileSync(`prod/html/index.2-3.html`, newFile);
-//   fs.unlinkSync(`prod/html/index.2.html`);
-//   fs.unlinkSync(`prod/html/index.3.html`);
+  // files too small
+  // const smallFiles = [2, 3];
+  let file2 = fs.readFileSync(`prod/html/index.2.html`, 'utf8');
+  let file3 = fs.readFileSync(`prod/html/index.3.html`, 'utf8');
+  let newFile = file2 + file3;
+  fs.writeFileSync(`prod/html/index.2-3.html`, newFile);
+  fs.unlinkSync(`prod/html/index.2.html`);
+  fs.unlinkSync(`prod/html/index.3.html`);
 
-//   cb();
-// };
+  cb();
+};
 
 // let even = (cb) => {
 //   clearHtmlDest();
@@ -353,7 +354,7 @@ let packModelData = () => {
 //   cb();
 // };
 
-// exports.logic = logic;
+exports.logic = logic;
 // exports.even = even;
 // exports.makeUnrevealed = makeUnrevealed;
 

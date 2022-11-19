@@ -47,7 +47,7 @@ module.exports = {
       title: 'Tickle Beach',
       template: 'src/octree/viewer.html',
       inject: 'body',
-      filename: 'viewer.html',
+      filename: 'index.html',
     }),
     new HtmlInlineScriptPlugin(),
   ],
