@@ -30,3 +30,11 @@ Will show the default viewer.html with the default seed.
 ```
 open public/viewer.html
 ```
+
+## Production build
+
+Take all the source and build it into one single html file for prod.
+
+```
+yarn run webpack --config webpack.oct.prod.js && open prod/viewer.html
+```
